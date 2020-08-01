@@ -28,7 +28,7 @@
                         + (param.error != null? ' text-danger' : ' text-primary')}"></i>
                 </span>
             </div>
-            <input th:class="${'form-control form-control-lg border-left-0'
+            <input th:class="${'form-control form-control-lg border-left-0 px-1'
                         + (param.error != null? ' border-danger text-danger' : ' border-primary')}"
                    th:field="*{username}" th:value="*{username}"
                    type="text" id="username" placeholder="Username" autofocus>
@@ -46,7 +46,7 @@
                         + (param.error != null? ' text-danger' : ' text-primary')}"></i>
                 </span>
             </div>
-            <input th:class="${'form-control form-control-lg border-left-0'
+            <input th:class="${'form-control form-control-lg border-left-0 px-1'
                         + (param.error != null? ' border-danger text-danger' : ' border-primary')}"
                    th:field="*{password}" th:value="*{password}"
                    type="password" id="password" placeholder="Password">

@@ -30,7 +30,7 @@
             </div>
             <input th:field="*{username}" th:value="*{username}"
                    type="text" id="username"
-                   th:class="${'form-control form-control-lg border-left-0'
+                   th:class="${'form-control form-control-lg border-left-0 px-1'
                         + (#fields.hasErrors('username')? ' border-danger text-danger' : ' border-primary')}"
                    placeholder="Username">
         </div>
@@ -51,7 +51,7 @@
             </div>
             <input th:field="*{email}" th:value="*{email}"
                    type="email" id="email"
-                   th:class="${'form-control form-control-lg border-left-0'
+                   th:class="${'form-control form-control-lg border-left-0 px-1'
                         + (#fields.hasErrors('email')? ' border-danger text-danger' : ' border-primary')}"
                    placeholder="Email">
         </div>
@@ -73,7 +73,7 @@
             <input th:field="*{password}" th:value="*{password}"
                    autocomplete="new-password"
                    type="password" id="password"
-                   th:class="${'form-control form-control-lg border-left-0'
+                   th:class="${'form-control form-control-lg border-left-0 px-1'
                         + (#fields.hasErrors('password')? ' border-danger text-danger' : ' border-primary')}"
                    placeholder="Password">
         </div>
