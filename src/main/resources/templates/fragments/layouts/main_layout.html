@@ -1,10 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <th:block th:replace="fragments/partials/_headTag :: _headTag"/>
+
+    <!-- Custom stylesheet for this page-->
+    <th:block layout:fragment="stylesheet_custom"/>
+    <!-- End custom stylesheet for this page-->
+    <script src="https://kit.fontawesome.com/f4bb5974c6.js" crossorigin="anonymous"></script>
 </head>
 <body>
-$END$
+<!-- container-scroller -->
+<div class="container-scroller d-flex">
+
+    <!-- partial:./partials/_sidebar.html -->
+    <nav th:replace="fragments/partials/_sidebar :: _sidebar"
+         class="sidebar sidebar-offcanvas" id="sidebar"></nav>
+    <!-- partial -->
+
+    <!-- page-body-wrapper -->
+    <div class="container-fluid page-body-wrapper">
+
+        <!-- partial:./partials/_navbar.html -->
+        <nav th:replace="fragments/partials/_navbar :: _navbar"
+             class="navbar col-lg-12 col-12 px-0 py-0 py-lg-4 d-flex flex-row"></nav>
+        <!-- partial -->
+
+        <!-- main-panel -->
+        <div class="main-panel">
+
+            <!-- content-wrapper -->
+            <div layout:fragment="content" class="content-wrapper"></div>
+            <!-- content-wrapper ends -->
+
+            <!-- partial:./partials/_footer.html -->
+            <footer th:replace="fragments/partials/_footer :: _footer"
+                    class="footer"></footer>
+            <!-- partial -->
+
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+
+</div>
+<!-- container-scroller end -->
+
+
+<form class="d-none" id="logout-form"
+      th:action="@{/logout}" action="#" method="post"></form>
+
+<!-- base:js -->
+<script th:src="@{/assets/vendors/js/vendor.bundle.base.js}"></script>
+<!-- end base:js -->
+
+<!-- Plugin js for this page-->
+<th:block layout:fragment="script_plugin"/>
+<!-- End plugin js for this page-->
+
+<!-- inject:js -->
+<script th:src="@{/assets/js/off-canvas.js}"></script>
+<script th:src="@{/assets/js/hoverable-collapse.js}"></script>
+<script th:src="@{/assets/js/template.js}"></script>
+<script th:src="@{/assets/js/clock.js}"></script>
+<script th:src="@{/assets/js/logout.js}"></script>
+<!-- end inject:js -->
+
+
+<!-- Custom js for this page-->
+<th:block layout:fragment="script_custom"/>
+<!-- End custom js for this page-->
+
 </body>
+
 </html>

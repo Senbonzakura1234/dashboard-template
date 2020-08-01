@@ -96,15 +96,14 @@ public class AuthenController {
             }
             return "views/authen/register";
         }else {
+            var basicRole = roleService.findBasicRole();
+            if(basicRole.isEmpty()) return "views/authen/register";
             List<UserRole> roleList = new ArrayList<>();
-
             var user = new User();
             user.setUsername(registerModel.getUsername());
             user.setEmail(registerModel.getEmail());
             user.setPassword(encoder.encode(registerModel.getPassword()));
             userService.add(user);
-            var basicRole = roleService.findBasicRole("");
-            if(basicRole.isEmpty()) return "views/authen/register";
             var basicUserRole = new UserRole();
             basicUserRole.setUserId(user.getId());
             basicUserRole.setRoleId(basicRole.get().getId());

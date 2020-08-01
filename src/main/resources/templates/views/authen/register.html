@@ -1,10 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" layout:decorate="~{fragments/layouts/authen_layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <th:block layout:fragment="stylesheet_custom"/>
 </head>
+
 <body>
-$END$
+
+<h4 layout:fragment="form_title">New here?</h4>
+<h6 layout:fragment="form_sub_title"
+    class="font-weight-light text-small">
+    Join us today! It takes only few steps
+</h6>
+<form layout:fragment="content" class="pt-3" th:action="@{/register}" method="post"
+      th:object="${registerModel}" action="#" novalidate>
+    <div class="form-group">
+        <label th:class="${#fields.hasErrors('username')? 'text-danger' : 'text-primary'}"
+            for="username">Username</label>
+        <div class="input-group">
+            <div class="input-group-prepend bg-transparent">
+                <span th:class="${'input-group-text bg-transparent border-right-0'
+                        + (#fields.hasErrors('username')? ' border-danger' : ' border-primary')}">
+                    <i th:class="${'mdi mdi-account-outline'
+                        + (#fields.hasErrors('username')? ' text-danger' : ' text-primary')}"></i>
+                </span>
+            </div>
+            <input th:field="*{username}" th:value="*{username}"
+                   type="text" id="username"
+                   th:class="${'form-control form-control-lg border-left-0'
+                        + (#fields.hasErrors('username')? ' border-danger text-danger' : ' border-primary')}"
+                   placeholder="Username">
+        </div>
+        <span class="text-danger text-small"
+              th:if="${#fields.hasErrors('username')}"
+              th:errors="*{username}"></span>
+    </div>
+    <div class="form-group">
+        <label th:class="${#fields.hasErrors('email')? 'text-danger' : 'text-primary'}"
+            for="email">Email</label>
+        <div class="input-group">
+            <div class="input-group-prepend bg-transparent">
+                <span th:class="${'input-group-text bg-transparent border-right-0'
+                        + (#fields.hasErrors('email')? ' border-danger' : ' border-primary')}">
+                    <i th:class="${'mdi mdi-email-outline'
+                        + (#fields.hasErrors('email')? ' text-danger' : ' text-primary')}"></i>
+                </span>
+            </div>
+            <input th:field="*{email}" th:value="*{email}"
+                   type="email" id="email"
+                   th:class="${'form-control form-control-lg border-left-0'
+                        + (#fields.hasErrors('email')? ' border-danger text-danger' : ' border-primary')}"
+                   placeholder="Email">
+        </div>
+        <span class="text-danger text-small"
+              th:if="${#fields.hasErrors('email')}"
+              th:errors="*{email}"></span>
+    </div>
+    <div class="form-group">
+        <label th:class="${#fields.hasErrors('password')? 'text-danger' : 'text-primary'}"
+            for="password">Password</label>
+        <div class="input-group">
+            <div class="input-group-prepend bg-transparent">
+                <span th:class="${'input-group-text bg-transparent border-right-0'
+                        + (#fields.hasErrors('password')? ' border-danger' : ' border-primary')}">
+                    <i th:class="${'mdi mdi-lock-outline'
+                        + (#fields.hasErrors('password')? ' text-danger' : ' text-primary')}"></i>
+                </span>
+            </div>
+            <input th:field="*{password}" th:value="*{password}"
+                   autocomplete="new-password"
+                   type="password" id="password"
+                   th:class="${'form-control form-control-lg border-left-0'
+                        + (#fields.hasErrors('password')? ' border-danger text-danger' : ' border-primary')}"
+                   placeholder="Password">
+        </div>
+        <span class="text-danger text-small"
+              th:if="${#fields.hasErrors('password')}"
+              th:errors="*{password}"></span>
+    </div>
+    <div class="form-group">
+        <p class="text-muted text-small">
+            By clicking REGISTER, you are agree to our
+            <a class="text-primary" href="#/">Terms & Conditions</a>
+        </p>
+    </div>
+    <div class="my-3">
+        <button type="submit" class="btn btn-block btn-primary btn-lg
+            font-weight-medium auth-form-btn">REGISTER</button>
+    </div>
+    <div class="mb-2 d-flex">
+        <button type="button" class="btn btn-facebook auth-form-btn flex-grow mr-1">
+            <i class="mdi mdi-facebook mr-xl-2"></i>
+            <span class="d-none d-xl-inline">Facebook</span>
+        </button>
+        <button type="button" class="btn btn-google auth-form-btn flex-grow ml-1">
+            <i class="mdi mdi-google mr-xl-2"></i>
+            <span class="d-none d-xl-inline">Google</span>
+        </button>
+    </div>
+    <div class="text-center mt-4 font-weight-light text-small">
+        Already have an account? <a th:href="@{/login}" class="text-primary">Login</a>
+    </div>
+</form>
+
+<th:block layout:fragment="half_background">
+    <div class="col-lg-6 register-half-bg d-none d-lg-flex flex-row">
+        <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2018 All rights reserved.</p>
+    </div>
+</th:block>
+
+<th:block layout:fragment="script_plugin"/>
+
+<th:block layout:fragment="script_custom"/>
+
 </body>
+
 </html>

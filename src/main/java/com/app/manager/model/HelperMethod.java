@@ -46,4 +46,9 @@ public class HelperMethod {
             return  "-> Red <-\t" + "Wrong domain - Exception: " + e.getMessage();
         }
     }
+
+    public static String upperCaseFirstChar(String input){
+        if(input == null || input.isEmpty()) return "";
+        return input.substring(0, 1).toUpperCase() + input.substring(1);
+    }
 }

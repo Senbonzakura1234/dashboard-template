@@ -34,14 +34,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 //comment this line below after finish import data
 //                .antMatchers("/data/**").permitAll()
 
-
-                .antMatchers("/css/**").permitAll()
-//                .antMatchers("/**").permitAll()
-                .antMatchers("/javascript/**").permitAll()
                 .antMatchers("/assets/**").permitAll()
-                .antMatchers("/api/**").permitAll()
+//                .antMatchers("/api/**").permitAll()
                 .antMatchers("/register/**").permitAll()
-                .antMatchers("/file/**").hasRole("ADMIN")
+//                .antMatchers("/file/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and().formLogin()
                 .loginPage("/login")

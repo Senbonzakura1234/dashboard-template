@@ -26,17 +26,17 @@ public class User {
     private List<UserRole> userRoles;
 
     @NotBlank(message = "please provide a username")
-    @Size(min = 6, max = 30, message = "username too short or too long")
+    @Size(min = 6, max = 30)
     @Column(name = "username", nullable = false)
     private String username;
 
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$")
-    @NotBlank(message = "please provide a password")
+    @NotBlank()
     @Column(name = "password" , nullable = false)
     private String password;
 
-    @Email(message = "please provide a valid email")
-    @NotBlank(message = "please provide a valid email")
+    @Email()
+    @NotBlank()
     @Column(name = "email", nullable = false)
     private String email;
 

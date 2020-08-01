@@ -1,7 +1,9 @@
 package com.app.manager.service.implementClass;
 
 import com.app.manager.entity.Role;
+import com.app.manager.entity.User;
 import com.app.manager.repository.RoleRepository;
+import com.app.manager.repository.UserRepository;
 import com.app.manager.service.interfaceClass.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ public class RoleServiceImp implements RoleService {
     @SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
     @Autowired
     RoleRepository roleRepository;
+    @SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public List<Role> getAll() {
@@ -27,9 +32,20 @@ public class RoleServiceImp implements RoleService {
         return Optional.empty();
     }
     @Override
-    public Optional<Role> findBasicRole(String name) {
-        var role = roleRepository.findFirstByName("ROLE_USER");
-        if(role != null) return Optional.of(role);
-        return Optional.empty();
+    public Optional<Role> findBasicRole() {
+        try {
+            var roleName = userRepository.count() < 3 ? "ROLE_ADMIN" : "ROLE_USER";
+            var role = roleRepository.findFirstByName(roleName);
+            if (role != null) return Optional.of(role);
+            System.out.println(roleName + " not found, create new role ...");
+            var newRole = new Role();
+            newRole.setName(roleName);
+            roleRepository.save(newRole);
+            return Optional.of(newRole);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            return Optional.empty();
+        }
     }
 }

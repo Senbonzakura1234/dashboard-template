@@ -1,10 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" layout:decorate="~{fragments/layouts/authen_layout}"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <th:block layout:fragment="stylesheet_custom"/>
 </head>
+
 <body>
-$END$
+
+<h4 layout:fragment="form_title">Welcome back!</h4>
+<h6 layout:fragment="form_sub_title"
+    class="font-weight-light text-small">
+    Happy to see you again!
+</h6>
+<form layout:fragment="content" class="pt-3"
+    th:action="@{/login}" method="post" th:object="${loginModel}" action="#" novalidate>
+    <div class="form-group">
+        <label th:class="${param.error != null? 'text-danger' : 'text-primary'}"
+            for="username">Username</label>
+        <div class="input-group">
+            <div class="input-group-prepend bg-transparent">
+                <span th:class="${'input-group-text bg-transparent border-right-0'
+                        + (param.error != null? '  border-danger' : ' border-primary')}">
+                    <i th:class="${'mdi mdi-account-outline'
+                        + (param.error != null? ' text-danger' : ' text-primary')}"></i>
+                </span>
+            </div>
+            <input th:class="${'form-control form-control-lg border-left-0'
+                        + (param.error != null? ' border-danger text-danger' : ' border-primary')}"
+                   th:field="*{username}" th:value="*{username}"
+                   type="text" id="username" placeholder="Username" autofocus>
+        </div>
+
+    </div>
+    <div class="form-group mb-1">
+        <label th:class="${param.error != null? 'text-danger' : 'text-primary'}"
+               for="password">Password</label>
+        <div class="input-group">
+            <div class="input-group-prepend bg-transparent">
+                <span th:class="${'input-group-text bg-transparent border-right-0'
+                        + (param.error != null? ' border-danger' : ' border-primary')}">
+                    <i th:class="${'mdi mdi-lock-outline'
+                        + (param.error != null? ' text-danger' : ' text-primary')}"></i>
+                </span>
+            </div>
+            <input th:class="${'form-control form-control-lg border-left-0'
+                        + (param.error != null? ' border-danger text-danger' : ' border-primary')}"
+                   th:field="*{password}" th:value="*{password}"
+                   type="password" id="password" placeholder="Password">
+        </div>
+        <div th:class="${'invalid-feedback mt-1' + (param.error != null? ' d-block' : '')}">
+            User or Password incorrect
+        </div>
+    </div>
+
+    <div class="mb-2 d-flex justify-content-between align-items-center">
+        <div class="form-check">
+            <label class="form-check-label text-muted">
+                <input type="checkbox" class="form-check-input">
+                Keep me signed in
+            </label>
+        </div>
+        <a href="#/" class="auth-link text-black">Forgot password?</a>
+    </div>
+    <div class="my-3">
+        <button type="submit" class="btn btn-block btn-primary
+            btn-lg font-weight-medium auth-form-btn">LOGIN</button>
+    </div>
+    <div class="mb-2 d-flex">
+        <button type="button" class="btn btn-facebook auth-form-btn flex-grow mr-1">
+            <i class="mdi mdi-facebook mr-xl-2"></i>
+            <span class="d-none d-xl-inline">Facebook</span>
+        </button>
+        <button type="button" class="btn btn-google auth-form-btn flex-grow ml-1">
+            <i class="mdi mdi-google mr-xl-2"></i>
+            <span class="d-none d-xl-inline">Google</span>
+        </button>
+    </div>
+    <div class="text-center mt-4 font-weight-light text-small">
+        Don't have an account? <a th:href="@{/register}" class="text-primary">Create</a>
+    </div>
+</form>
+
+<th:block layout:fragment="half_background">
+    <div class="col-lg-6 login-half-bg d-none d-lg-flex flex-row">
+        <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2018 All rights reserved.</p>
+    </div>
+</th:block>
+
+<th:block layout:fragment="script_plugin"/>
+
+<th:block layout:fragment="script_custom"/>
+
 </body>
+
 </html>
