@@ -7056,12 +7056,12 @@ a.close.disabled {
   vertical-align: text-top !important; }
 
 .bg-primary {
-  background-color: #b66dff !important; }
+  background-color: #6640b2 !important; }
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #9d3aff !important; }
+  background-color: #51338c !important; }
 
 .bg-secondary {
   background-color: #c3bdbd !important; }
@@ -7080,12 +7080,12 @@ button.bg-success:focus {
   background-color: #15a28d !important; }
 
 .bg-info {
-  background-color: #198ae3 !important; }
+  background-color: #223e9c !important; }
 
 a.bg-info:hover, a.bg-info:focus,
 button.bg-info:hover,
 button.bg-info:focus {
-  background-color: #146eb5 !important; }
+  background-color: #223e9c !important; }
 
 .bg-warning {
   background-color: #fed713 !important; }
@@ -7096,12 +7096,12 @@ button.bg-warning:focus {
   background-color: #ddb901 !important; }
 
 .bg-danger {
-  background-color: #fe7c96 !important; }
+  background-color: #f83e37 !important; }
 
 a.bg-danger:hover, a.bg-danger:focus,
 button.bg-danger:hover,
 button.bg-danger:focus {
-  background-color: #fe496d !important; }
+  background-color: #f31109 !important; }
 
 .bg-light {
   background-color: #f8f9fa !important; }

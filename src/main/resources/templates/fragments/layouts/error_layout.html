@@ -14,8 +14,40 @@
 
 <body>
 <div class="container-scroller">
-    <div class="container-fluid page-body-wrapper full-page-wrapper"
-         layout:fragment="content"></div>
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <!--suppress ThymeleafVariablesResolveInspection -->
+        <div th:class="${'content-wrapper d-flex align-items-center text-center error-page'
+                + (status < 500? ' bg-info' : ' bg-primary')}">
+            <div class="row flex-grow">
+                <div class="col-xl-7 mx-auto text-white">
+                    <div class="row align-items-center d-flex flex-row">
+                        <div class="col-xl-6 text-xl-right pr-xl-4">
+                            <h1 class="display-1 mb-0">
+                                <th:block layout:fragment="status"></th:block>
+                            </h1>
+                        </div>
+                        <div class="col-xl-6 error-page-divider text-xl-left pl-xl-4">
+                            <h2>SORRY!</h2>
+                            <h3 class="font-weight-light">
+                                <th:block layout:fragment="message"></th:block>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-12 text-center mt-xl-2">
+                            <a class="text-white font-weight-medium" th:href="@{/}">Back to home</a>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-12 mt-xl-2">
+                            <p class="text-white font-weight-medium text-center">Copyright &copy; 2018 All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+    </div>
     <!-- page-body-wrapper ends -->
 </div>
 <!-- container-scroller -->
@@ -31,7 +63,7 @@
 <!-- inject:js -->
 <script th:src="@{/assets/js/off-canvas.js}"></script>
 <script th:src="@{/assets/js/hoverable-collapse.js}"></script>
-<script th:src="@{/assets/error/js/misc.js}"></script>
+<script th:src="@{/assets/js/template.js}"></script>
 <!-- end inject:js -->
 
 

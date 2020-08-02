@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html lang="en" layout:decorate="~{fragments/layouts/error_layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block layout:fragment="stylesheet_custom"/>
+</head>
+
+<body>
+
+<th:block layout:fragment="status" th:text="${status}"></th:block>
+<th:block layout:fragment="message">
+    <th:block th:text="${status == 404? 'The page you’re looking for was not found.' : ''}"></th:block>
+    <th:block th:text="${status == 500? 'Internal server error!' : ''}"></th:block>
+    <th:block th:text="${status != 500 && status != 404? error : ''}"></th:block>
+</th:block>
+
+
+
+<th:block layout:fragment="script_plugin"/>
+
+<th:block layout:fragment="script_custom"/>
+
+</body>
+
+</html>

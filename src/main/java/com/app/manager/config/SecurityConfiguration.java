@@ -38,6 +38,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/api/**").permitAll()
                 .antMatchers("/register/**").permitAll()
 //                .antMatchers("/file/**").hasRole("ADMIN")
+                .antMatchers("/test/error/403").hasRole("TEST_FORBIDDEN")
                 .anyRequest().authenticated()
                 .and().formLogin()
                 .loginPage("/login")

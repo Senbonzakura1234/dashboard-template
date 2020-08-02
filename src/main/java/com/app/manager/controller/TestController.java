@@ -5,10 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class TestController {
@@ -36,5 +33,21 @@ public class TestController {
         System.out.println(testFormCheck.getOptionsRadios());
         System.out.println(testFormCheck.getOptionsRadio2());
         return "redirect:/test/formCheck";
+    }
+
+    @GetMapping("/test/error/500")
+    public void test500() throws Exception{
+        throw new Exception("error");
+    }
+    @PostMapping("/test/error/405")
+    public void test405(){
+    }
+
+    @RequestMapping("/test/error/400")
+    public void test400(@RequestParam(value = "id") String id){
+    }
+
+    @RequestMapping("/test/error/403")
+    public void test403(){
     }
 }
