@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymth:srcf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:replace="fragments/partials/_errorHeadTag :: _errorHeadTag"/>
+
+    <!-- Custom stylesheet for this page-->
+    <th:block layout:fragment="stylesheet_custom"/>
+    <!-- End custom stylesheet for this page-->
+    <script src="https://kit.fontawesome.com/f4bb5974c6.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper"
+         layout:fragment="content"></div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+
+<!-- base:js -->
+<script th:src="@{/assets/vendors/js/vendor.bundle.base.js}"></script>
+<!-- end base:js -->
+
+<!-- Plugin js for this page-->
+<th:block layout:fragment="script_plugin"/>
+<!-- End plugin js for this page-->
+
+<!-- inject:js -->
+<script th:src="@{/assets/js/off-canvas.js}"></script>
+<script th:src="@{/assets/js/hoverable-collapse.js}"></script>
+<script th:src="@{/assets/error/js/misc.js}"></script>
+<!-- end inject:js -->
+
+
+<!-- Custom js for this page-->
+<th:block layout:fragment="script_custom"/>
+<!-- End custom js for this page-->
+
+</body>
+
+</html>

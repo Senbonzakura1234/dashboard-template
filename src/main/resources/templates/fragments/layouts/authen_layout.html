@@ -23,13 +23,11 @@
                             <div class="card-body p-0">
                                 <div class="media">
                                     <img class="d-flex align-self-center mr-3 brand-logo"
-                                         th:src="@{/assets/images/logo-mini.svg}" alt="logo">
-                                    <div class="media-body">
-                                        <p class="card-text">
-                                            <h4 layout:fragment="form_title"></h4>
-                                            <h6 layout:fragment="form_sub_title"
-                                                class="font-weight-light"></h6>
-                                        </p>
+                                         th:src="@{/assets/images/logo-mini.svg}" alt="logo"/>
+                                    <div class="media-body align-self-center">
+                                        <h4 class="card-text" layout:fragment="form_title"></h4>
+                                        <h6 layout:fragment="form_sub_title"
+                                            class="font-weight-light card-text"></h6>
                                     </div>
                                 </div>
                             </div>

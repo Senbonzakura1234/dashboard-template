@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{fragments/layouts/error_layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block layout:fragment="stylesheet_custom"/>
+</head>
+
+<body>
+
+<div layout:fragment="content" class="container-fluid page-body-wrapper full-page-wrapper">
+    <div class="content-wrapper d-flex align-items-center text-center error-page bg-primary">
+        <div class="row flex-grow">
+            <div class="col-xl-7 mx-auto text-white">
+                <div class="row align-items-center d-flex flex-row">
+                    <div class="col-xl-6 text-xl-right pr-xl-4">
+                        <h1 class="display-1 mb-0">404</h1>
+                    </div>
+                    <div class="col-xl-6 error-page-divider text-xl-left pl-xl-4">
+                        <h2>SORRY!</h2>
+                        <h3 class="font-weight-light">The page you’re looking for was not found.</h3>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-12 text-center mt-xl-2">
+                        <a class="text-white font-weight-medium" th:href="@{/}">Back to home</a>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-12 mt-xl-2">
+                        <p class="text-white font-weight-medium text-center">Copyright &copy; 2018 All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content-wrapper ends -->
+</div>
+
+
+
+<th:block layout:fragment="script_plugin"/>
+
+<th:block layout:fragment="script_custom"/>
+
+</body>
+
+</html>

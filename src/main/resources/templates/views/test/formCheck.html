@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{fragments/layouts/main_layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block layout:fragment="stylesheet_custom"/>
+</head>
+<body>
+<div layout:fragment="content" class="content-wrapper">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Checkbox Controls</h4>
+                    <p class="card-description">Checkbox and radio controls (default appearance is in primary color)</p>
+                    <form method="post" th:action="@{/test/formCheck}" th:object="${testFormCheck}" action="#" novalidate>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input"
+                                                   th:field="*{check1}">
+                                            Default
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input"
+                                                   checked th:field="*{check2}">
+                                            Checked
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input"
+                                                   readonly th:field="*{check3}">
+                                            Disabled
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input"
+                                                   readonly checked th:field="*{check4}">
+                                            Disabled checked
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input"
+                                                   th:field="*{optionsRadios}" id="optionsRadios1" value="option1">
+                                            Default
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input"
+                                                   th:field="*{optionsRadios}" id="optionsRadios2" value="option2" checked>
+                                            Selected
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input"
+                                                   th:field="*{optionsRadio2}"
+                                                   id="optionsRadios3" value="option3" readonly>
+                                            Disabled
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input"
+                                                   th:field="*{optionsRadio2}"
+                                                   id="optionsRadios4" value="option4" readonly checked>
+                                            Selected and disabled
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <a href="#/" class="btn btn-light">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<th:block layout:fragment="script_plugin"/>
+
+<th:block layout:fragment="script_custom">
+    <script th:src="@{/assets/js/file-upload.js}"></script>
+</th:block>
+
+</body>
+
+</html>
