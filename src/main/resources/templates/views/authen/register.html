@@ -92,14 +92,14 @@
             font-weight-medium auth-form-btn">REGISTER</button>
     </div>
     <div class="mb-2 d-flex">
-        <button type="button" class="btn btn-facebook auth-form-btn flex-grow mr-1">
-            <i class="mdi mdi-facebook mr-xl-2"></i>
-            <span class="d-none d-xl-inline">Facebook</span>
-        </button>
-        <button type="button" class="btn btn-google auth-form-btn flex-grow ml-1">
-            <i class="mdi mdi-google mr-xl-2"></i>
-            <span class="d-none d-xl-inline">Google</span>
-        </button>
+        <a th:each="url : ${urls}"
+           th:href="${url.value}"
+           th:class="${'btn auth-form-btn flex-grow mr-1 btn-'
+            + url.key.toLowerCase()}">
+            <i th:class="${'mdi mr-xl-2 mdi-'
+            + url.key.toLowerCase()}"></i>
+            <span class="d-none d-sm-inline d-lg-none d-xl-inline" th:text="${url.key}"></span>
+        </a>
     </div>
     <div class="text-center mt-4 font-weight-light text-small">
         Already have an account? <a th:href="@{/login}" class="text-primary">Login</a>

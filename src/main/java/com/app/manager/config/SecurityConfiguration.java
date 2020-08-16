@@ -40,6 +40,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/file/**").hasRole("ADMIN")
                 .antMatchers("/test/error/403").hasRole("TEST_FORBIDDEN")
                 .anyRequest().authenticated()
+                .and().oauth2Login()
+                .defaultSuccessUrl("/oauth2/callback", true)
+//                .redirectionEndpoint()
+//                .baseUri("/oauth2/callback/**")
+//                .and()
+                .failureUrl("/login?error")
+                .loginPage("/login")
                 .and().formLogin()
                 .loginPage("/login")
                 .permitAll();

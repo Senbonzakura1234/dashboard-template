@@ -51,4 +51,11 @@ public class HelperMethod {
         if(input == null || input.isEmpty()) return "";
         return input.substring(0, 1).toUpperCase() + input.substring(1);
     }
+
+    public static String removeDotEmail(String input){
+        var inputSplit = input.split("@", 2);
+        return inputSplit.length < 2 ? inputSplit[0] :
+                inputSplit[0].replace(".", "") +
+                        "@" + inputSplit[1];
+    }
 }
